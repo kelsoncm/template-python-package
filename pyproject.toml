@@ -1,0 +1,79 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "new-package"
+version = "0.1.0"
+description = "{{DESCRIPTION}}"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE.md"]
+authors = [{ name = "{{AUTHOR}}", email = "you@example.com" }]
+requires-python = ">=3.10"
+dependencies = []
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Typing :: Typed",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pre-commit>=4.3",
+    "ruff>=0.17",
+    "mypy>=2.4",
+    "pytest>=9.0",
+    "pytest-cov>=7.0",
+    "doc8>=2.0",
+]
+docs = [
+    "sphinx>=9.1,<10",
+    "furo>=2025.12.19",
+]
+
+[project.urls]
+Homepage = "https://github.com/{{OWNER}}/new-package"
+Documentation = "https://{{OWNER}}.github.io/new-package/"
+Issues = "https://github.com/{{OWNER}}/new-package/issues"
+Changelog = "https://github.com/{{OWNER}}/new-package/blob/main/CHANGELOG.md"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+new_package = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--cov=new_package --cov-report=term-missing"
+
+[tool.coverage.run]
+source = ["new_package"]
+branch = true
+
+[tool.coverage.report]
+fail_under = 100
+show_missing = true
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "S"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101"]
+
+[tool.mypy]
+strict = true
+python_version = "3.10"
+files = ["src", "tests"]
