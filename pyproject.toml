@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=77", "wheel"]
+requires = ["setuptools>=84.2.1", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -27,11 +27,11 @@ classifiers = [
 
 [project.optional-dependencies]
 dev = [
-    "pre-commit>=4.3",
-    "ruff>=0.17",
-    "mypy>=2.4",
-    "pytest>=9.0",
-    "pytest-cov>=7.0",
+    "pre-commit>=4.6.2",
+    "ruff>=0.17.5",
+    "mypy>=2.4.1",
+    "pytest>=9.2.0",
+    "pytest-cov>=7.1.0",
     "doc8>=2.0",
 ]
 docs = [
